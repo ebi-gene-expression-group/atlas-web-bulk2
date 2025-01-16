@@ -1,2 +1,4 @@
 rootProject.name = 'atlas-web-bulk2'
 
+include 'atlas-web-core2'
+

@@ -1,0 +1,4 @@
+[submodule "atlas-web-core2"]
+	path = atlas-web-core2
+	url = https://github.com/ebi-gene-expression-group/atlas-web-core2.git
+	branch = main

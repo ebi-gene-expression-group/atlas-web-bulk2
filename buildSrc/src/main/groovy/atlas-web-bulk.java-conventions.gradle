@@ -1,0 +1,69 @@
+plugins {
+  id 'java'
+  id 'jacoco'
+}
+
+group = 'uk.ac.ebi.atlas'
+version = '1.0-SNAPSHOT'
+
+java {
+  sourceCompatibility = '17'
+}
+
+repositories {
+  mavenCentral()
+  // For ae-efo-loader
+  // Ideally mavenLocal() would be the last repo to have as fallback, but we won’t have access to our Artifactory
+  // unless we’re on the VPN, in which case the build fails
+  mavenLocal()
+  maven {
+    url "http://45.88.81.166/artifactory/maven-local/"
+    allowInsecureProtocol true
+  }
+}
+
+dependencies {
+  implementation ('org.apache.solr:solr-core:8.7.0') {
+    exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
+  }
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation platform('org.junit:junit-bom:5.10.0')
+  testImplementation 'org.junit.jupiter:junit-jupiter'
+
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+//processTestResources {
+//  filesMatching('configuration.properties') {
+//    expand(
+//            dataFilesLocation: dataFilesLocation,
+//            experimentFilesLocation: experimentFilesLocation,
+//            experimentDesignLocation: experimentDesignLocation,
+//    )
+//  }
+//
+//  filesMatching('solr.properties') {
+//    expand(
+//            zkHosts: project.hasProperty('zkHosts') ? zkHosts : 'localhost:2181',
+//            solrHosts: project.hasProperty('solrHosts') ? solrHosts : 'localhost:8983',
+//            solrUser: project.hasProperty('solrUser') ? solrUser : '',
+//            solrPassword: project.hasProperty('solrPassword') ? solrPassword : '',
+//    )
+//  }
+//
+//  filesMatching('jdbc.properties') {
+//    expand(
+//            jdbcUrl: project.hasProperty('jdbcUrl') ? jdbcUrl : 'jdbc:postgresql://localhost:5432/gxpgxadev',
+//            jdbcUsername: project.hasProperty('jdbcUsername') ? jdbcUsername : 'atlasdev',
+//            jdbcPassword: project.hasProperty('jdbcPassword') ? jdbcPassword : 'atlasdev'
+//    )
+//  }
+//
+//  filesMatching('logback-test.xml') {
+//    expand(
+//            buildDir: buildDir,
+//            testLogs: project.hasProperty('testLogs') ? testLogs : 'STDOUT',
+//    )
+//  }
+//}

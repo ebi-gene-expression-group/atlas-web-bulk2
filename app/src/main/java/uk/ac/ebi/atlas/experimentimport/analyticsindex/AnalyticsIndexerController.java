@@ -3,6 +3,7 @@ package uk.ac.ebi.atlas.experimentimport.analyticsindex;
 import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import uk.ac.ebi.atlas.controllers.ResourceNotFoundException;
 import uk.ac.ebi.atlas.model.experiment.ExperimentType;
 
-import javax.inject.Inject;
 import java.util.Arrays;
 
 import static uk.ac.ebi.atlas.experimentimport.analyticsindex.AnalyticsIndexerManager.DEFAULT_SOLR_BATCH_SIZE;
@@ -31,7 +31,7 @@ public class AnalyticsIndexerController {
     private AnalyticsIndexerManager analyticsIndexerManager;
     private AnalyticsIndexerMonitor analyticsIndexerMonitor;
 
-    @Inject
+    @Autowired
     public AnalyticsIndexerController(AnalyticsIndexerManager analyticsIndexerManager,
                                       AnalyticsIndexerMonitor analyticsIndexerMonitor) {
         this.analyticsIndexerManager = analyticsIndexerManager;

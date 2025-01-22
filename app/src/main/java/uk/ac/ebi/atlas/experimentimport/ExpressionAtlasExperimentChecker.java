@@ -3,6 +3,7 @@ package uk.ac.ebi.atlas.experimentimport;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uk.ac.ebi.atlas.commons.streams.ObjectInputStream;
 import uk.ac.ebi.atlas.model.experiment.ExperimentType;
@@ -13,7 +14,6 @@ import uk.ac.ebi.atlas.resource.DataFileHub;
 import uk.ac.ebi.atlas.trader.ConfigurationTrader;
 import uk.ac.ebi.atlas.utils.StringArrayUtil;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.text.MessageFormat;
@@ -29,7 +29,7 @@ public class ExpressionAtlasExperimentChecker implements ExperimentChecker {
     private final DataFileHub dataFileHub;
     private final ConfigurationTrader configurationTrader;
 
-    @Inject
+    @Autowired
     public ExpressionAtlasExperimentChecker(DataFileHub dataFileHub,
                                             ConfigurationTrader configurationTrader) {
         this.dataFileHub = dataFileHub;

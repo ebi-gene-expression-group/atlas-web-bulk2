@@ -23,6 +23,8 @@ repositories {
 }
 
 dependencies {
+  implementation 'org.jetbrains:annotations:20.1.0'
+
   implementation ('org.apache.solr:solr-core:8.7.0') {
     exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
   }

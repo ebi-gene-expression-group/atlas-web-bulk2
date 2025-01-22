@@ -3,6 +3,7 @@ package uk.ac.ebi.atlas.controllers.page;
 import com.google.common.base.Joiner;
 import com.google.gson.JsonArray;
 import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,6 @@ import uk.ac.ebi.atlas.species.SpeciesInferrer;
 import uk.ac.ebi.atlas.trader.ExperimentTrader;
 import uk.ac.ebi.atlas.utils.GeneSetEnrichmentClient;
 
-import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +38,7 @@ public class GeneSetEnrichmentController extends HtmlExceptionHandlingController
     private final GeneSetEnrichmentClient geneSetEnrichmentClient;
     private final SpeciesInferrer speciesInferrer;
 
-    @Inject
+    @Autowired
     public GeneSetEnrichmentController(ExperimentTrader experimentTrader,
                                        GeneSetEnrichmentClient geneSetEnrichmentClient,
                                        SpeciesInferrer speciesInferrer) {

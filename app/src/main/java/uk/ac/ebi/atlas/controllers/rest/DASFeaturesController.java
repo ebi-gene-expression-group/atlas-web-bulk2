@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.SetMultimap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,6 @@ import uk.ac.ebi.atlas.search.diffanalytics.DiffAnalytics;
 import uk.ac.ebi.atlas.solr.analytics.differential.DifferentialAnalyticsSearchService;
 import uk.ac.ebi.atlas.trader.ExperimentTrader;
 
-import javax.inject.Inject;
 import java.util.List;
 import java.util.Set;
 
@@ -32,7 +32,7 @@ public class DASFeaturesController extends HtmlExceptionHandlingController {
     private final DifferentialAnalyticsSearchService differentialAnalyticsSearchService;
     private final DifferentialJsonResultsParser differentialJsonResultsParser;
 
-    @Inject
+    @Autowired
     public DASFeaturesController(ExperimentTrader experimentTrader,
                                     DifferentialAnalyticsSearchService differentialAnalyticsSearchService,
                                     DifferentialJsonResultsParser differentialJsonResultsParser) {

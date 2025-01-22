@@ -7,6 +7,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import uk.ac.ebi.atlas.controllers.JsonExceptionHandlingController;
 import uk.ac.ebi.atlas.model.experiment.differential.DifferentialExpression;
 import uk.ac.ebi.atlas.model.experiment.differential.microarray.MicroarrayExpression;
@@ -14,18 +16,16 @@ import uk.ac.ebi.atlas.model.experiment.sample.Contrast;
 import uk.ac.ebi.atlas.search.diffanalytics.DiffAnalytics;
 import uk.ac.ebi.atlas.trader.ContrastTrader;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Optional;
 import java.util.function.Function;
 
-@Named
+@Controller
 public class DifferentialJsonResultsParser extends JsonExceptionHandlingController {
     private ContrastTrader contrastTrader;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DifferentialJsonResultsParser.class);
 
-    @Inject
+    @Autowired
     public DifferentialJsonResultsParser(ContrastTrader contrastTrader) {
         this.contrastTrader = contrastTrader;
     }

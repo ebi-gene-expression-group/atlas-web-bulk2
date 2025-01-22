@@ -1,6 +1,6 @@
 package uk.ac.ebi.atlas.configuration;
 
-import org.cache2k.configuration.Cache2kConfiguration;
+import org.cache2k.config.Cache2kConfig;
 import org.cache2k.extra.spring.SpringCache2kCacheManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ import java.util.Optional;
 public class CacheConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(CacheConfig.class);
     private static final long DEFAULT_CACHE_CAPACITY =
-            Cache2kConfiguration.of(Object.class, Object.class).getEntryCapacity();
+            Cache2kConfig.of(Object.class, Object.class).getEntryCapacity();
     private Path experimentsDirPath;
 
     public CacheConfig(Path experimentsDirPath) {

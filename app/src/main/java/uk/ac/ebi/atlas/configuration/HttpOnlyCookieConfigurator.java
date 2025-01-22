@@ -1,8 +1,8 @@
 package uk.ac.ebi.atlas.configuration;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
 
 public class HttpOnlyCookieConfigurator implements ServletContextListener {
     @Override
